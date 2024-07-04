@@ -42,6 +42,18 @@ jobs:
         git config --global user.name 'usman6036'
         git config --global user.email 'usmansaleem2799@gmail.com'
 
+      - name: Stage changes
+        run: |
+          git add .
+
+      - name: Commit changes
+        run: |
+          git commit -m "Create successful and unsuccessful directories"
+
+      - name: Push changes
+        run: |
+          git push ${{ github.env.GIT_PUSH_URL }} master
+
     - name: Commit and Push changes
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
