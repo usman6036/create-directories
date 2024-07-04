@@ -1,9 +1,9 @@
 name: Generate folders
 
 on:
-  schedule:
-    # Run every hour
-    - cron: '0 * * * *'
+  push:
+    branches:
+      - master
 
 jobs:
   build:
