@@ -23,14 +23,16 @@ jobs:
         python -m pip install --upgrade pip
         
     - name: List directory before running script
-      run: ls -la
+      run: |
+        ls -la
 
     - name: Run script to create directories
       run: |
         python create_folders.py
 
     - name: List directory after running script
-      run: ls -la
+      run: |
+        ls -la
     - name: Configure Git
       run: |
         git config --global user.name 'usman6036'
