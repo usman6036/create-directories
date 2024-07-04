@@ -25,7 +25,7 @@ jobs:
     - name: List directory before running script
       run: ls -la
 
-    - name: Run script
+    - name: Run script to create directories
       run: |
         python create_folders.py
 
@@ -41,6 +41,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
+        git status
         git add .
         git commit -m "Create successful and unsuccessful directories"
         git push

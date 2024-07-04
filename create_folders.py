@@ -1,10 +1,12 @@
 import os
+import sys
 
-# Create directories if they don't exist
-os.makedirs('successful', exist_ok=True)
-os.makedirs('unsuccessful', exist_ok=True)
+# Get the directory path of the script
+script_dir = os.path.dirname(os.path.realpath(__file__))
 
-# ... Other
+# Create directories relative to the script's directory
+os.makedirs(os.path.join(script_dir, 'successful'), exist_ok=True)
+os.makedirs(os.path.join(script_dir, 'unsuccessful'), exist_ok=True)
 
 # Log directory creation
-print(f"Directories created: {os.listdir()}")
+print(f"Directories created in {script_dir}: {os.listdir(script_dir)}")
