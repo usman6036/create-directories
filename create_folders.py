@@ -4,7 +4,7 @@ import os
 os.makedirs('successful', exist_ok=True)
 os.makedirs('unsuccessful', exist_ok=True)
 
-# ... Other code ...
+# ... Other
 
 # Log directory creation
 print(f"Directories created: {os.listdir()}")
