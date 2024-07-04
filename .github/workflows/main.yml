@@ -41,6 +41,6 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        git add successful unsuccessful
+        git add .
         git commit -m "Create successful and unsuccessful directories"
         git push
