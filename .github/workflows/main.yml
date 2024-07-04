@@ -31,7 +31,6 @@ jobs:
 
     - name: List directory after running script
       run: ls -la
-
     - name: Configure Git
       run: |
         git config --global user.name 'usman6036'
