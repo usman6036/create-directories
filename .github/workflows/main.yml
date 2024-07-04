@@ -30,13 +30,6 @@ jobs:
     - name: List directory before running script
       run: ls -la
 
-    - name: Run script to create directories
-      run: |
-        python create_folders.py
-
-    - name: List directory before running script
-        run: ls -la
-
       - name: Run script to create directories
         run: |
           python create_folders.py
