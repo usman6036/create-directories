@@ -3,7 +3,7 @@ name: Generate folders
 on:
   push:
     branches:
-      - master  # Trigger on push to the main branch
+      - master
 
 jobs:
   build:
@@ -21,27 +21,35 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-
-    - name: Create directories
+        
+    - name: Print current directory
       run: |
-        mkdir -p test_directory/subdirectory
-        echo "Hello, World!" > test_directory/hello.txt
+        pwd
+        ls -la
 
-    - name: List files before commit
+    - name: List directory before running script
       run: ls -la
 
-    - name: Configure Git
+    - name: Run script to create directories
       run: |
-        git config --global user.name 'usman6036'
-        git config --global user.email 'usmansaleem2799@gmail.com'
+        python create_folders.py
 
-    - name: Commit changes
-      run: |
-        git add test_directory
-        git commit -m "Add test_directory with files"
-      
-    - name: Push changes
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        git push origin master
+    - name: List directory after running script
+        run: |
+          ls -la
+
+      - name: Configure Git
+        run: |
+          git config --global user.name 'usman6036'
+          git config --global user.email 'usmansaleem2799@gmail.com'
+
+      - name: Commit and Push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GIT_PUSH_URL: ${{ github.repository_url }}
+        run: |
+          git status
+          git add .
+          git commit -m "Create successful and unsuccessful directories"
+          git push ${GIT_PUSH_URL} master
+
