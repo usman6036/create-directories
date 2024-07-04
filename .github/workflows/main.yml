@@ -34,13 +34,20 @@ jobs:
       run: |
         python create_folders.py
 
-    - name: List directory after running script
-      run: ls -la
+    - name: List directory before running script
+        run: ls -la
 
-    - name: Configure Git
-      run: |
-        git config --global user.name 'usman6036'
-        git config --global user.email 'usmansaleem2799@gmail.com'
+      - name: Run script to create directories
+        run: |
+          python create_folders.py
+
+      - name: List directory after running script
+        run: ls -la
+
+      - name: Configure Git
+        run: |
+          git config --global user.name 'usman6036'
+          git config --global user.email 'usmansaleem2799@gmail.com'
 
       - name: Stage changes
         run: |
@@ -53,13 +60,3 @@ jobs:
       - name: Push changes
         run: |
           git push ${{ github.env.GIT_PUSH_URL }} master
-
-    - name: Commit and Push changes
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GIT_PUSH_URL: ${{ github.repository_url }}
-      run: |
-        git status
-        git add .
-        git commit -m "Create successful and unsuccessful directories"
-        git push ${GIT_PUSH_URL} master
